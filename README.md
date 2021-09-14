@@ -20,7 +20,7 @@ available for download at [https://www.fredjo.com/](https://www.fredjo.com/).
 For example, you can download IHDP dataset by executing these commands. 
 
 ```
-mkdir datasets/IHDP
+mkdir -p datasets/IHDP
 cd datasets/IHDP
 
 wget --no-check-certificate http://www.fredjo.com/files/ihdp_npci_1-1000.train.npz.zip
