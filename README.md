@@ -7,6 +7,7 @@ This implementation is based on Tensorflow and Keras. We recommend to create a p
 
 ```
 conda env create -f env.yml
+conda activate dragonbalss
 ```
 
 
