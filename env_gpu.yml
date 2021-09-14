@@ -3,7 +3,7 @@ channels:
   - defaults
   - anaconda
 dependencies:
-  - tensorflow
+  - tensorflow-gpu
   - keras 
   - matplotlib
   - numpy
