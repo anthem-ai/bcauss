@@ -3,8 +3,15 @@ This repo provides the code for reproducing the experiments in [DragonBalls: sel
 
 ### Dependency
 
-- pip install torch
-- pip install transformers
+This implementation is based on Tensorflow and Keras. We recommend to create a proper enviroment with dependencies specified in ```env.yml``` (```env_gpu.yml``` for GPUs):
+
+```
+conda env create -f env.yml
+```
+
+
+
+
 
 
 

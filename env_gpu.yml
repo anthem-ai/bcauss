@@ -1,0 +1,12 @@
+name: dragonbalss
+channels:
+  - defaults
+  - anaconda
+dependencies:
+  - tensorflow
+  - keras 
+  - matplotlib
+  - numpy
+  - scikit-learn
+  - pandas 
+ 
