@@ -384,7 +384,7 @@ def main():
     output_dir = os.path.join(args.output_base_dir, args.knob)
     run(data_base_dir=args.data_base_dir, 
         output_dir=output_dir, 
-        dragon=rgs.knob,
+        dragon=args.knob,
         b_ratio=args.b_ratio,
         act_fn=args.act_fn,
         optim=args.optim,
