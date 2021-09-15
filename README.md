@@ -46,7 +46,7 @@ We aim to use common configuration instead of tuning separately for all the sett
         --optim sgd\
         --lr 1e-5\
         --momentum 0.9\
-        --val_split =0.22\
+        --val_split 0.22\
         
 To reproduce the different combinations of the tables/ablation study, use the options 
 
