@@ -2,7 +2,7 @@
 Code Skeleton from: https://github.com/claudiashi57/dragonnet 
 """
 
-from models import make_dragonnet , make_dragonbalss, make_tarnet, dragonnet_loss_binarycross, regression_loss
+from models import *
 import os, time 
 import glob
 import argparse
