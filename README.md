@@ -47,7 +47,7 @@ We aim to use common configuration instead of tuning separately for all the sett
         --momentum 0.9\
         --val_split 0.22\
         
-To reproduce the different combinations of the tables/ablation study, use the options 
+To reproduce the different combinations of the tables and to reproduce the ablation study, use the options 
 
 * ```--use_bce``` to adopt the binary-cross-entropy objective, 
 * ```--use_targ_term``` to adopt the targeted normalization term, 
