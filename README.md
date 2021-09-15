@@ -32,6 +32,42 @@ unzip ihdp_npci_1-1000.test.npz.zip
 rm ihdp_npci_1-1000.test.npz.zip
 ```
 
+### Running paper experiments 
+We aim to use common configuration instead of tuning separately for all the settings. Hence, unless otherwise specified (e.g. ablation study), experiments adopt learning rate 1e-5, ReLU activation function, batch size equal to the train set length and stochastic gradient descent with momentum (0.9), auto-balancing objective with the same importance as the regression objective. For example, to reproduce the results of DragonBalss on IHDP 
+
+  $ python train.py \
+        --data_base_dir datasets/IHDP\
+        --knob dragonbalss\
+        --output_base_dir result/ihdp_csv_1-1000\
+        --dataset ihdp\
+        --b_ratio 1.0\
+        --bs_ratio 1.0\
+        --act_fn relu\
+        --optim sgd\
+        --lr 1e-5\
+        --momentum 0.9\
+        --val_split =0.22\
+        
+To reproduce the different combinations of the tables/ablation study, use the options 
+
+* ```--use_bce``` to adopt the binary-cross-entropy objective, 
+* ```--use_targ_term``` to adopt the targeted normalization term, 
+* ```--optim``` to adopt different optimizers (e.g. adam), 
+* ```--act_fn``` to adopt different activation functions (e.g. elu), 
+* ```--bs_ratio``` to adopt different batch size ratios (1.0=all trainset), 
+* ```--b_ratio``` to adopt different importance of the auto-balancing objective, 
+* ```--lr``` to adopt different learning rates, 
+* ```--momentum``` to adopt different momentum, 
+* ```--val_split``` to adopt different x-val split ratios.  
+
+
+
+
+
+
+
+
+
 ## Contact
 
 Feel free to contact xxxx (xxxx@xxxx.com), xxxx (xxxx@xxxx.com) and xxxx (xxxx@xxxx.com) if you have any further questions.
