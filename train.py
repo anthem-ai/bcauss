@@ -383,19 +383,19 @@ def main():
     
     # go --> 
     output_dir = os.path.join(output_base_dir, knob)
-    run_ihdp_fredjo(data_base_dir=args.data_base_dir, 
-                    output_dir=output_dir, 
-                    dragon=rgs.knob,
-                    b_ratio=args.b_ratio,
-                    act_fn=args.act_fn,
-                    optim=args.optim,
-                    norm_bal_term=not args.raw_bal_term,
-                    bs_ratio=args.bs_ratio,
-                    use_bce=args.use_bce,
-                    lr=args.lr,
-                    momentum=args.momentum,
-                    use_targ_term=args.use_targ_term,
-                    batch_size=args.bs) 
+    run(data_base_dir=args.data_base_dir, 
+        output_dir=output_dir, 
+        dragon=rgs.knob,
+        b_ratio=args.b_ratio,
+        act_fn=args.act_fn,
+        optim=args.optim,
+        norm_bal_term=not args.raw_bal_term,
+        bs_ratio=args.bs_ratio,
+        use_bce=args.use_bce,
+        lr=args.lr,
+        momentum=args.momentum,
+        use_targ_term=args.use_targ_term,
+        batch_size=args.bs) 
 
 if __name__ == '__main__':
     main()
