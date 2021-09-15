@@ -117,8 +117,6 @@ def make_dragonnet(input_dim, reg_l2):
     :param reg: L2 penalty term in loss function
     :return: Keras model
     """
-    t_l1 = 0.
-    t_l2 = reg_l2
     inputs = Input(shape=(input_dim,), name='input')
 
     # representation
@@ -182,8 +180,6 @@ def make_dragonbalss(input_dim,
     :param norm_bal_term: whether or not normalizing the auto-balancing term 
     :return: Keras model
     """
-    t_l1 = 0.
-    t_l2 = reg_l2
     inputs = Input(shape=(input_dim,), name='input')
 
     # representation
