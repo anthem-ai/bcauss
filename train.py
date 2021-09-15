@@ -12,7 +12,6 @@ from sklearn.model_selection import train_test_split
 import keras.backend as K
 from keras.optimizers import SGD, Adam
 from keras.callbacks import EarlyStopping, ModelCheckpoint, TensorBoard, ReduceLROnPlateau, TerminateOnNaN
-from experiment.idhp_data import *
 import pandas as pd
 import numpy as np
 
