@@ -143,8 +143,8 @@ def train_and_predict_dragonbalss(t_tr, y_tr, x_tr,mu_0_tr, mu_1_tr,
                                   b_ratio=1.,
                                   use_targ_term=False,
                                   use_bce=False, 
-                                  optim='sgd','
-                                  verbose = 0,
+                                  optim='sgd',
+                                  verbose=0,
                                   act_fn='elu',
                                   norm_bal_term=True,
                                   bs_ratio=1.0,
@@ -358,7 +358,7 @@ def main():
     parser.add_argument('--data_base_dir', type=str, help="path to directory LBIDD")
     parser.add_argument('--knob', type=str, default=None, help="dragonnet or tarnet or nednet")
     parser.add_argument('--output_base_dir', type=str, help="directory to save the output")
-    parser.add_argument('--dataset', type=str, help="dataset" , default="claudia")
+    parser.add_argument('--dataset', type=str, help="dataset" , default="ihdp")
     parser.add_argument('--b_ratio', type=float, help="dataset" , default=1.0)
     parser.add_argument('--bs', type=int, help="batch size" , default=32)
     parser.add_argument('--bs_ratio', type=float, help="batch size ratio (1.0=all trainset)" , default=1.0)
