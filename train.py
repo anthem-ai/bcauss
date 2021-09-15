@@ -381,7 +381,7 @@ def main():
     print('-' * 30)
     
     # go --> 
-    output_dir = os.path.join(args.output_base_dir, knob)
+    output_dir = os.path.join(args.output_base_dir, args.knob)
     run(data_base_dir=args.data_base_dir, 
         output_dir=output_dir, 
         dragon=rgs.knob,
