@@ -362,7 +362,6 @@ def main():
     parser.add_argument('--data_base_dir', type=str, help="path to directory LBIDD")
     parser.add_argument('--knob', type=str, default=None, help="dragonnet or tarnet or nednet")
     parser.add_argument('--output_base_dir', type=str, help="directory to save the output")
-    parser.add_argument('--dataset', type=str, help="dataset" , default="ihdp")
     parser.add_argument('--b_ratio', type=float, help="dataset" , default=1.0)
     parser.add_argument('--bs', type=int, help="batch size" , default=32)
     parser.add_argument('--bs_ratio', type=float, help="batch size ratio (1.0=all trainset)" , default=1.0)
