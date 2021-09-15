@@ -163,7 +163,7 @@ def make_dragonbalss(input_dim,
                      ratio=1.,
                      b_ratio=1.,
                      use_bce=False,
-                     use_targ_term=True, 
+                     use_targ_term=False, 
                      act_fn='relu',
                      norm_bal_term=True):
     """
