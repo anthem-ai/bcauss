@@ -39,7 +39,6 @@ We aim to use common configuration instead of tuning separately for all the sett
         --data_base_dir datasets/IHDP\
         --knob dragonbalss\
         --output_base_dir result/ihdp_csv_1-1000\
-        --dataset ihdp\
         --b_ratio 1.0\
         --bs_ratio 1.0\
         --act_fn relu\
