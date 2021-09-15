@@ -12,7 +12,6 @@ from sklearn.model_selection import train_test_split
 import keras.backend as K
 from keras.optimizers import SGD, Adam
 from keras.callbacks import EarlyStopping, ModelCheckpoint, TensorBoard, ReduceLROnPlateau, TerminateOnNaN
-from experiment.idhp_data import *
 import pandas as pd
 import numpy as np
 
@@ -299,18 +298,18 @@ def run(data_base_dir,
         t_te, y_te, x_te, mu0te, mu1te = T_te[:,idx] , YF_te[:,idx], X_te[:,:,idx], mu_0_te[:,idx], mu_1_te[:,idx]  
         
         if dragon == 'dragonbalss':
-            test_outputs, train_output = train_and_predict_bcaus_dragons_specific_optim_fredjo(t_tr, y_tr, x_tr, mu0tr, mu1tr,
-                                                                                               t_te, y_te, x_te, mu0te, mu1te,
-                                                                                               output_dir=simulation_output_dir,
-                                                                                               ratio=ratio, 
-                                                                                               val_split=val_split, #0.22
-                                                                                               b_ratio=b_ratio,
-                                                                                               use_targ_term=use_targ_term,
-                                                                                               use_bce=use_bce, 
-                                                                                               act_fn=act_fn,
-                                                                                               optim=optim,
-                                                                                               norm_bal_term=norm_bal_term,
-                                                                                               bs_ratio=bs_ratio)
+            test_outputs, train_output = train_and_predict_dragonbalss(t_tr, y_tr, x_tr, mu0tr, mu1tr,
+                                                                       t_te, y_te, x_te, mu0te, mu1te,
+                                                                       output_dir=simulation_output_dir,
+                                                                       ratio=ratio, 
+                                                                       val_split=val_split, #0.22
+                                                                       b_ratio=b_ratio,
+                                                                       use_targ_term=use_targ_term,
+                                                                       use_bce=use_bce, 
+                                                                       act_fn=act_fn,
+                                                                       optim=optim,
+                                                                       norm_bal_term=norm_bal_term,
+                                                                       bs_ratio=bs_ratio)
             ##################################
             train_output_dir = os.path.join(simulation_output_dir, "baseline")
             os.makedirs(train_output_dir, exist_ok=True)
@@ -327,15 +326,15 @@ def run(data_base_dir,
         elif dragon == 'dragonnet' or dragon == 'tarnet':
             for is_targeted_regularization in [True, False]:
                 print("Is targeted regularization: {}".format(is_targeted_regularization))
-                test_outputs, train_output = train_and_predict_dragons_fredjo(t_tr, y_tr, x_tr, mu0tr, mu1tr,
-                                                                              t_te, y_te, x_te, mu0te, mu1te,
-                                                                              targeted_regularization=is_targeted_regularization,
-                                                                              output_dir=simulation_output_dir,
-                                                                              knob_loss=knob_loss, 
-                                                                              ratio=ratio, 
-                                                                              dragon=dragon,
-                                                                              val_split=val_split, 
-                                                                              batch_size=batch_size) 
+                test_outputs, train_output = train_and_predict_dragonnet_or_tarnet(t_tr, y_tr, x_tr, mu0tr, mu1tr,
+                                                                                   t_te, y_te, x_te, mu0te, mu1te,
+                                                                                   targeted_regularization=is_targeted_regularization,
+                                                                                   output_dir=simulation_output_dir,
+                                                                                   knob_loss=knob_loss, 
+                                                                                   ratio=ratio, 
+                                                                                   dragon=dragon,
+                                                                                   val_split=val_split, 
+                                                                                   batch_size=batch_size) 
                 if is_targeted_regularization:
                     train_output_dir = os.path.join(simulation_output_dir, "targeted_regularization")
                 else:
@@ -383,19 +382,19 @@ def main():
     
     # go --> 
     output_dir = os.path.join(output_base_dir, knob)
-    run_ihdp_fredjo(data_base_dir=args.data_base_dir, 
-                    output_dir=output_dir, 
-                    dragon=rgs.knob,
-                    b_ratio=args.b_ratio,
-                    act_fn=args.act_fn,
-                    optim=args.optim,
-                    norm_bal_term=not args.raw_bal_term,
-                    bs_ratio=args.bs_ratio,
-                    use_bce=args.use_bce,
-                    lr=args.lr,
-                    momentum=args.momentum,
-                    use_targ_term=args.use_targ_term,
-                    batch_size=args.bs) 
+    run(data_base_dir=args.data_base_dir, 
+        output_dir=output_dir, 
+        dragon=rgs.knob,
+        b_ratio=args.b_ratio,
+        act_fn=args.act_fn,
+        optim=args.optim,
+        norm_bal_term=not args.raw_bal_term,
+        bs_ratio=args.bs_ratio,
+        use_bce=args.use_bce,
+        lr=args.lr,
+        momentum=args.momentum,
+        use_targ_term=args.use_targ_term,
+        batch_size=args.bs) 
 
 if __name__ == '__main__':
     main()
