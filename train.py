@@ -165,7 +165,7 @@ def train_and_predict_dragonbalss(t_tr, y_tr, x_tr,mu_0_tr, mu_1_tr,
     train_outputs = []
     test_outputs = []
     
-    print(">> I am dragonbalss...')
+    print(">> I am dragonbalss...")
     dragonnet = make_dragonbalss(x_tr.shape[1], 
                                  reg_l2=0.01,
                                  ratio=ratio,
