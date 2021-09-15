@@ -315,7 +315,10 @@ def run(data_base_dir,
                                                                        norm_bal_term=norm_bal_term,
                                                                        bs_ratio=bs_ratio)
             ##################################
-            train_output_dir = os.path.join(simulation_output_dir, "baseline")
+            if use_targ_term:
+                train_output_dir = os.path.join(simulation_output_dir, "targeted_regularization")
+            else:
+                train_output_dir = os.path.join(simulation_output_dir, "baseline")
             os.makedirs(train_output_dir, exist_ok=True)
     
             # save the outputs of for each split (1 per npz file)

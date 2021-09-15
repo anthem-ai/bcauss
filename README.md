@@ -70,6 +70,11 @@ In the paper we adopt as comparable Dragonnet in the different experiments. For 
 
 It is possible to run TARNET as well as comparable on the same settings, by adopting the option  ```--knob tarnet```. 
 
+To evaluate model performance of experiments, use ```evaluate.py```, e.g. 
+
+    $ python evaluate.py \
+        --data_base_dir ihdp_csv_1-1000
+
 
 ## Contact
 
