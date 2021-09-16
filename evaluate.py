@@ -83,11 +83,7 @@ def make_table(train_test='train',
                n_replication=None,
                ihdp_dir='idhp',
                truncate_level=0.01):
-    dict = {
-            'tarnet':      {'baseline': 0, 'targeted_regularization': 0, 'baseline_std': 0, 'targeted_regularization_std': 0},
-            'dragonnet':   {'baseline': 0, 'targeted_regularization': 0, 'baseline_std': 0, 'targeted_regularization_std': 0},
-            'dragonbalss': {'baseline': 0, 'targeted_regularization': 0, 'baseline_std': 0, 'targeted_regularization_std': 0}
-            }
+    dict = {'dragonbalss': {}}
     tmle_dict = copy.deepcopy(dict)
 
 
@@ -142,7 +138,7 @@ def main(ihdp_dir='idhp'):
     print("--------------------------")
     print("Results for TMLE estimator:")
     print(tmle_dict)
-
+    print()
 
     print("************ TEST *********************")
     dict, tmle_dict = make_table(train_test='test',ihdp_dir=ihdp_dir)

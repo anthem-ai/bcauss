@@ -59,17 +59,6 @@ To reproduce the different combinations of the tables and to reproduce the ablat
 * ```--momentum``` to adopt different momentum, 
 * ```--val_split``` to adopt different x-val split ratios.  
 
-In the paper we adopt as comparable Dragonnet in the different experiments. For example, to reproduce the results of Dragonnet on the previous settings 
-
-    $ python train.py \
-        --data_base_dir datasets/IHDP\
-        --knob dragonnet\
-        --output_base_dir result/ihdp_csv_1-1000\
-        --bs 64\
-        --val_split 0.22\
-
-It is possible to run TARNET as well as comparable on the same settings, by adopting the option  ```--knob tarnet```. 
-
 To evaluate model performance of experiments, use ```evaluate.py```, e.g. 
 
     $ python evaluate.py \
