@@ -80,14 +80,15 @@ def psi_tmle_cont_outcome(q_t0, q_t1, g, t, y, eps_hat=None, truncate_level=0.05
     return psi_tmle, psi_tmle_std, eps_hat, initial_loss, final_loss, g_loss
 
 def make_table(train_test='train', 
-               n_replication=None,
                ihdp_dir='idhp',
                truncate_level=0.01):
-    dict = {'dragonbalss': {}}
-    tmle_dict = copy.deepcopy(dict)
+    
+    dict, tmle_dict = {}, {} 
+    knob_list = sorted(glob.glob('result/{}/*'.format(ihdp_dir)))
+    knob_list = [ aa.split('/')[-1] for aa in knob_list]
+    print("knob_list::",knob_list)
 
-
-    for knob in list(dict.keys()):
+    for knob in list(knob_list):
         file_path = 'result/{}/{}/*'.format(ihdp_dir,knob)
         simulation_files = sorted(glob.glob(file_path))
         print(knob,"-->FOUND::",len(simulation_files),"simulation files in ",file_path)
@@ -97,6 +98,7 @@ def make_table(train_test='train',
             file_dir = 'result/{}/{}/{}/{}'.format(ihdp_dir,knob,0, model)
             if os.path.exists(file_dir):
                 simple_errors, tmle_errors = [], []
+                dict[knob],tmle_dict[knob]={},{}
                 for rep in range(len(simulation_files)):
                     #print(rep)
                     q_t0, q_t1, g, t, y_dragon, eps, mu_0, mu_1 = load_data(knob, rep, model, train_test,ihdp_dir=ihdp_dir)
