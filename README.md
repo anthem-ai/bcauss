@@ -64,6 +64,9 @@ To evaluate model performance of experiments, use ```evaluate.py```, e.g.
     $ python evaluate.py \
         --data_base_dir ihdp_csv_1-1000
 
+### Treated and untreated distributions induced by the learned representation
+
+To see the treated and untreated distributions induced by the learned representation on a sample experiment, see this notebook [Learned_Representations.ipynb](Learned_Representations.ipynb). 
 
 ## Contact
 
