@@ -105,13 +105,13 @@ def make_tarreg_loss(ratio=1., dragonnet_loss=dragonnet_loss_binarycross):
 
 
 
-# ____    ____     _     _   _  ____   ____  
-#| __ )  / ___|   / \   | | | |/ ___| / ___| 
-#|  _ \ | |      / _ \  | | | |\___ \ \___ \ 
-#| |_) || |___  / ___ \ | |_| | ___) | ___) |
-#|____/  \____|/_/   \_\ \___/ |____/ |____/ 
-#                                                                         
-def make_becauss(input_dim, reg_l2):
+# ____                                                  _   
+# |  _ \  _ __   __ _   __ _   ___   _ __   _ __    ___ | |_ 
+# | | | || '__| / _` | / _` | / _ \ | '_ \ | '_ \  / _ \| __|
+# | |_| || |   | (_| || (_| || (_) || | | || | | ||  __/| |_ 
+# |____/ |_|    \__,_| \__, | \___/ |_| |_||_| |_| \___| \__|
+#                     |___/                                                                                                
+def make_dragonnet(input_dim, reg_l2):
     """
     Dragonnet: https://github.com/claudiashi57/dragonnet 
     :param input_dim: Number of covariates
@@ -151,22 +151,22 @@ def make_becauss(input_dim, reg_l2):
     return model
 
 
-# ____                                     ____          _  ____   ____  
-# |  _ \  _ __   __ _   __ _   ___   _ __  | __ )   __ _ | |/ ___| / ___| 
-# | | | || '__| / _` | / _` | / _ \ | '_ \ |  _ \  / _` || |\___ \ \___ \ 
-# | |_| || |   | (_| || (_| || (_) || | | || |_) || (_| || | ___) | ___) |
-# |____/ |_|    \__,_| \__, | \___/ |_| |_||____/  \__,_||_||____/ |____/ 
-#                     |___/                                              
-def make_dragonbalss(input_dim, 
-                     reg_l2=0.01,
-                     ratio=1.,
-                     b_ratio=1.,
-                     use_bce=False,
-                     use_targ_term=False, 
-                     act_fn='relu',
-                     norm_bal_term=True):
+# ____    ____     _     _   _  ____   ____  
+#| __ )  / ___|   / \   | | | |/ ___| / ___| 
+#|  _ \ | |      / _ \  | | | |\___ \ \___ \ 
+#| |_) || |___  / ___ \ | |_| | ___) | ___) |
+#|____/  \____|/_/   \_\ \___/ |____/ |____/ 
+#     
+def make_bcauss(input_dim, 
+                 reg_l2=0.01,
+                 ratio=1.,
+                 b_ratio=1.,
+                 use_bce=False,
+                 use_targ_term=False, 
+                 act_fn='relu',
+                 norm_bal_term=True):
     """
-    DragonBalSS - This implementation allows to experiment all the configurations mentioned in the paper making the related comparisons, i.e. 
+    bcauss - This implementation allows to experiment all the configurations mentioned in the paper making the related comparisons, i.e. 
         - with or without targeted regularization objective (DragonBalSS does not have this term)
         - with or without binary-cross-entropy objective (DragonBalSS does not have this term)
         - different activation functions such as ReLU, ELU, Tanh (DragonBalSS adopts ReLU)
