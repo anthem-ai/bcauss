@@ -134,7 +134,7 @@ def main(ihdp_dir='idhp'):
     print("************ TRAIN *********************")
     dict, tmle_dict = make_table(train_test='train',ihdp_dir=ihdp_dir)
     print("--------------------------")
-    print(">>>> Results for Non-TMLE estimator (=DragonBalSS, by default):")
+    print(">>>> Results for Non-TMLE estimator (=BCAUSS, by default):")
     print(dict)
 
     print("--------------------------")
@@ -145,7 +145,7 @@ def main(ihdp_dir='idhp'):
     print("************ TEST *********************")
     dict, tmle_dict = make_table(train_test='test',ihdp_dir=ihdp_dir)
     print("--------------------------")
-    print(">>>> Results for Non-TMLE estimator (=DragonBalSS, by default):")
+    print(">>>> Results for Non-TMLE estimator (=BCAUSS, by default):")
     print(dict)
     
     print("--------------------------")

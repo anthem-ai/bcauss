@@ -7,7 +7,7 @@ This implementation is based on Tensorflow and Keras. We recommend to create a p
 
 ```
 conda env create -f env.yml
-conda activate dragonbalss
+conda activate bcauss
 ```
 
 ### Data
@@ -33,11 +33,11 @@ rm ihdp_npci_1-1000.test.npz.zip
 ```
 
 ### Running paper experiments 
-We aim to use common configuration instead of tuning separately for all the settings. Hence, unless otherwise specified (e.g. ablation study), experiments adopt learning rate 1e-5, ReLU activation function, batch size equal to the train set length and stochastic gradient descent with momentum (0.9), auto-balancing objective with the same importance as the regression objective. For example, to reproduce the results of DragonBalss on IHDP 
+We aim to use common configuration instead of tuning separately for all the settings. Hence, unless otherwise specified (e.g. ablation study), experiments adopt learning rate 1e-5, ReLU activation function, batch size equal to the train set length and stochastic gradient descent with momentum (0.9), auto-balancing objective with the same importance as the regression objective. For example, to reproduce the results of BCAUSS on IHDP 
 
     $ python train.py \
         --data_base_dir datasets/IHDP\
-        --knob dragonbalss\
+        --knob bcauss\
         --output_base_dir result/ihdp_csv_1-1000\
         --b_ratio 1.0\
         --bs_ratio 1.0\

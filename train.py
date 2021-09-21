@@ -135,23 +135,23 @@ def train_and_predict_dragonnet_or_tarnet(t_tr, y_tr, x_tr,mu_0_tr, mu_1_tr,
     return test_outputs, train_outputs
 
 
-def train_and_predict_dragonbalss(t_tr, y_tr, x_tr,mu_0_tr, mu_1_tr,
-                                  t_te, y_te, x_te,mu_0_te, mu_1_te,
-                                  output_dir='',
-                                  ratio=1., 
-                                  val_split=0.3, 
-                                  b_ratio=1.,
-                                  use_targ_term=False,
-                                  use_bce=False, 
-                                  optim='sgd',
-                                  verbose=0,
-                                  act_fn='elu',
-                                  norm_bal_term=True,
-                                  bs_ratio=1.0,
-                                  max_batch=500,
-                                  lr=1e-5,
-                                  momentum = 0.9, #0.80
-                                  post_proc_fn=_split_output_fredjo):
+def train_and_predict_bcauss(t_tr, y_tr, x_tr,mu_0_tr, mu_1_tr,
+                                t_te, y_te, x_te,mu_0_te, mu_1_te,
+                                output_dir='',
+                                ratio=1., 
+                                val_split=0.3, 
+                                b_ratio=1.,
+                                use_targ_term=False,
+                                use_bce=False, 
+                                optim='sgd',
+                                verbose=0,
+                                act_fn='elu',
+                                norm_bal_term=True,
+                                bs_ratio=1.0,
+                                max_batch=500,
+                                lr=1e-5,
+                                momentum = 0.9, #0.80
+                                post_proc_fn=_split_output_fredjo):
     t_tr = t_tr.reshape(-1, 1)
     t_te = t_te.reshape(-1, 1)
     y_tr = y_tr.reshape(-1, 1)
@@ -165,15 +165,15 @@ def train_and_predict_dragonbalss(t_tr, y_tr, x_tr,mu_0_tr, mu_1_tr,
     train_outputs = []
     test_outputs = []
     
-    print(">> I am dragonbalss...")
-    dragonnet = make_dragonbalss(x_tr.shape[1], 
-                                 reg_l2=0.01,
-                                 ratio=ratio,
-                                 b_ratio=b_ratio,
-                                 use_targ_term=use_targ_term,
-                                 use_bce=use_bce,
-                                 act_fn=act_fn,
-                                 norm_bal_term=norm_bal_term) 
+    print(">> I am bcauss...")
+    dragonnet = make_bcauss(x_tr.shape[1], 
+                            reg_l2=0.01,
+                            ratio=ratio,
+                            b_ratio=b_ratio,
+                            use_targ_term=use_targ_term,
+                            use_bce=use_bce,
+                            act_fn=act_fn,
+                            norm_bal_term=norm_bal_term) 
 
     # for reporducing the experimemt
     i = 0
@@ -209,7 +209,7 @@ def train_and_predict_dragonbalss(t_tr, y_tr, x_tr,mu_0_tr, mu_1_tr,
         sgd_callbacks = [
             TerminateOnNaN(),
             EarlyStopping(monitor='val_loss', patience=40, min_delta=0. , restore_best_weights=True),
-            #ModelCheckpoint('dragonbalss.h5', save_best_only=True, save_weights_only=True),
+            #ModelCheckpoint('bcauss.h5', save_best_only=True, save_weights_only=True),
             ReduceLROnPlateau(monitor='loss', factor=0.5, patience=5, verbose=verbose, mode='auto',
                               min_delta=0., cooldown=0, min_lr=0)
         ]
@@ -221,7 +221,7 @@ def train_and_predict_dragonbalss(t_tr, y_tr, x_tr,mu_0_tr, mu_1_tr,
                       epochs=max_batch, #300
                       batch_size=int(x_train.shape[0]*bs_ratio), 
                       verbose=verbose)  
-        #dragonnet.load_weights('dragonbalss.h5')
+        #dragonnet.load_weights('bcauss.h5')
         
     else:
         raise Exception("optim <"+str(optim)+"> not supported!")
@@ -299,21 +299,21 @@ def run(data_base_dir,
         t_tr, y_tr, x_tr, mu0tr, mu1tr = T_tr[:,idx] , YF_tr[:,idx], X_tr[:,:,idx], mu_0_tr[:,idx], mu_1_tr[:,idx] 
         t_te, y_te, x_te, mu0te, mu1te = T_te[:,idx] , YF_te[:,idx], X_te[:,:,idx], mu_0_te[:,idx], mu_1_te[:,idx]  
         
-        if dragon == 'dragonbalss':
-            test_outputs, train_output = train_and_predict_dragonbalss(t_tr, y_tr, x_tr, mu0tr, mu1tr,
-                                                                       t_te, y_te, x_te, mu0te, mu1te,
-                                                                       output_dir=simulation_output_dir,
-                                                                       ratio=ratio, 
-                                                                       val_split=val_split, #0.22
-                                                                       b_ratio=b_ratio,
-                                                                       use_targ_term=use_targ_term,
-                                                                       use_bce=use_bce, 
-                                                                       act_fn=act_fn,
-                                                                       optim=optim,
-                                                                       momentum=momentum,
-                                                                       lr=lr,
-                                                                       norm_bal_term=norm_bal_term,
-                                                                       bs_ratio=bs_ratio)
+        if dragon == 'bcauss':
+            test_outputs, train_output = train_and_predict_bcauss(t_tr, y_tr, x_tr, mu0tr, mu1tr,
+                                                                    t_te, y_te, x_te, mu0te, mu1te,
+                                                                    output_dir=simulation_output_dir,
+                                                                    ratio=ratio, 
+                                                                    val_split=val_split, #0.22
+                                                                    b_ratio=b_ratio,
+                                                                    use_targ_term=use_targ_term,
+                                                                    use_bce=use_bce, 
+                                                                    act_fn=act_fn,
+                                                                    optim=optim,
+                                                                    momentum=momentum,
+                                                                    lr=lr,
+                                                                    norm_bal_term=norm_bal_term,
+                                                                    bs_ratio=bs_ratio)
             ##################################
             if use_targ_term:
                 train_output_dir = os.path.join(simulation_output_dir, "targeted_regularization")
@@ -363,7 +363,7 @@ def run(data_base_dir,
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--data_base_dir', type=str, help="path to directory LBIDD")
-    parser.add_argument('--knob', type=str, default='dragonbalss', help="the model")
+    parser.add_argument('--knob', type=str, default='bcauss', help="the model")
     parser.add_argument('--output_base_dir', type=str, help="directory to save the output")
     parser.add_argument('--b_ratio', type=float, help="relative importance of the auto-balancing self-supervised term" , default=1.0)
     parser.add_argument('--bs', type=int, help="batch size" , default=64)
