@@ -104,13 +104,14 @@ def make_tarreg_loss(ratio=1., dragonnet_loss=dragonnet_loss_binarycross):
     return tarreg_ATE_unbounded_domain_loss
 
 
-# ____                                                  _   
-# |  _ \  _ __   __ _   __ _   ___   _ __   _ __    ___ | |_ 
-# | | | || '__| / _` | / _` | / _ \ | '_ \ | '_ \  / _ \| __|
-# | |_| || |   | (_| || (_| || (_) || | | || | | ||  __/| |_ 
-# |____/ |_|    \__,_| \__, | \___/ |_| |_||_| |_| \___| \__|
-#                     |___/                                 
-def make_dragonnet(input_dim, reg_l2):
+
+# ____    ____     _     _   _  ____   ____  
+#| __ )  / ___|   / \   | | | |/ ___| / ___| 
+#|  _ \ | |      / _ \  | | | |\___ \ \___ \ 
+#| |_) || |___  / ___ \ | |_| | ___) | ___) |
+#|____/  \____|/_/   \_\ \___/ |____/ |____/ 
+#                                                                         
+def make_becauss(input_dim, reg_l2):
     """
     Dragonnet: https://github.com/claudiashi57/dragonnet 
     :param input_dim: Number of covariates
