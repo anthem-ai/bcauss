@@ -167,10 +167,10 @@ def make_bcauss(input_dim,
                  norm_bal_term=True):
     """
     bcauss - This implementation allows to experiment all the configurations mentioned in the paper making the related comparisons, i.e. 
-        - with or without targeted regularization objective (DragonBalSS does not have this term)
-        - with or without binary-cross-entropy objective (DragonBalSS does not have this term)
-        - different activation functions such as ReLU, ELU, Tanh (DragonBalSS adopts ReLU)
-        - normalizing or unnormalizing the auto-balancing term  (DragonBalSS adopts normalization)
+        - with or without targeted regularization objective (bcauss does not have this term)
+        - with or without binary-cross-entropy objective (bcauss does not have this term)
+        - different activation functions such as ReLU, ELU, Tanh (bcauss adopts ReLU)
+        - normalizing or unnormalizing the auto-balancing term  (bcauss adopts normalization)
     :param input_dim: Number of covariates
     :param reg: L2 penalty term in loss function
     :param ratio: the relative importance of the targeted regularization objective, if adopted 
