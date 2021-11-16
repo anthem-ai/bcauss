@@ -41,6 +41,7 @@ def train_and_predict_dragonnet_or_tarnet(t_tr, y_tr, x_tr,mu_0_tr, mu_1_tr,
                                      knob_loss=dragonnet_loss_binarycross, 
                                      ratio=1., 
                                      dragon='',
+                                     act_fn='elu', 
                                      val_split=0.2, 
                                      batch_size=64,
                                      verbose = 0):
@@ -66,7 +67,7 @@ def train_and_predict_dragonnet_or_tarnet(t_tr, y_tr, x_tr,mu_0_tr, mu_1_tr,
     if dragon == 'tarnet':
         dragonnet = make_tarnet(x_tr.shape[1], 0.01)
     elif dragon == 'dragonnet':
-        dragonnet = make_dragonnet(x_tr.shape[1], 0.01)
+        dragonnet = make_dragonnet(x_tr.shape[1], 0.01,act_fn=act_fn)
     
     metrics = [regression_loss, binary_classification_loss, treatment_accuracy, track_epsilon]
 
@@ -340,6 +341,7 @@ def run(data_base_dir,
                                                                                    knob_loss=knob_loss, 
                                                                                    ratio=ratio, 
                                                                                    dragon=dragon,
+                                                                                   act_fn=act_fn, 
                                                                                    val_split=val_split, 
                                                                                    batch_size=batch_size) 
                 if is_targeted_regularization:

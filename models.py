@@ -111,7 +111,7 @@ def make_tarreg_loss(ratio=1., dragonnet_loss=dragonnet_loss_binarycross):
 # | |_| || |   | (_| || (_| || (_) || | | || | | ||  __/| |_ 
 # |____/ |_|    \__,_| \__, | \___/ |_| |_||_| |_| \___| \__|
 #                     |___/                                                                                                
-def make_dragonnet(input_dim, reg_l2):
+def make_dragonnet(input_dim, reg_l2,act_fn='elu'):
     """
     Dragonnet: https://github.com/claudiashi57/dragonnet 
     :param input_dim: Number of covariates
@@ -121,20 +121,20 @@ def make_dragonnet(input_dim, reg_l2):
     inputs = Input(shape=(input_dim,), name='input')
 
     # representation
-    x = Dense(units=200, activation='elu', kernel_initializer='RandomNormal')(inputs)
-    x = Dense(units=200, activation='elu', kernel_initializer='RandomNormal')(x)
-    x = Dense(units=200, activation='elu', kernel_initializer='RandomNormal')(x)
+    x = Dense(units=200, activation=act_fn, kernel_initializer='RandomNormal')(inputs)
+    x = Dense(units=200, activation=act_fn, kernel_initializer='RandomNormal')(x)
+    x = Dense(units=200, activation=act_fn, kernel_initializer='RandomNormal')(x)
 
 
     t_predictions = Dense(units=1, activation='sigmoid')(x)
 
     # HYPOTHESIS
-    y0_hidden = Dense(units=100, activation='elu', kernel_regularizer=regularizers.l2(reg_l2))(x)
-    y1_hidden = Dense(units=100, activation='elu', kernel_regularizer=regularizers.l2(reg_l2))(x)
+    y0_hidden = Dense(units=100, activation=act_fn, kernel_regularizer=regularizers.l2(reg_l2))(x)
+    y1_hidden = Dense(units=100, activation=act_fn, kernel_regularizer=regularizers.l2(reg_l2))(x)
 
     # second layer
-    y0_hidden = Dense(units=100, activation='elu', kernel_regularizer=regularizers.l2(reg_l2))(y0_hidden)
-    y1_hidden = Dense(units=100, activation='elu', kernel_regularizer=regularizers.l2(reg_l2))(y1_hidden)
+    y0_hidden = Dense(units=100, activation=act_fn, kernel_regularizer=regularizers.l2(reg_l2))(y0_hidden)
+    y1_hidden = Dense(units=100, activation=act_fn, kernel_regularizer=regularizers.l2(reg_l2))(y1_hidden)
 
     # third
     y0_predictions = Dense(units=1, activation=None, kernel_regularizer=regularizers.l2(reg_l2), name='y0_predictions')(
