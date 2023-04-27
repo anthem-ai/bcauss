@@ -65,3 +65,16 @@ To evaluate model performance of experiments, use ```evaluate.py```, e.g.
 ### Treated and untreated distributions induced by the learned representation
 
 To see the treated and untreated distributions induced by the learned representation on a sample experiment, see this notebook [Learned_Representations.ipynb](Learned_Representations.ipynb). 
+
+## Citation
+
+```bibtex
+@article{tesei2023learning,
+  title={Learning end-to-end patient representations through self-supervised covariate balancing for causal treatment effect estimation},
+  author={Tesei, Gino and Giampanis, Stefanos and Shi, Jingpu and Norgeot, Beau},
+  journal={Journal of Biomedical Informatics},
+  volume={140},
+  pages={104339},
+  year={2023},
+  publisher={Elsevier}
+}
